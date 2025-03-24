@@ -1,3 +1,4 @@
+
 import { Player, RankedData } from '../types/player';
 import { toast } from "sonner";
 
@@ -22,13 +23,17 @@ export const tierValues: Record<string, number> = {
 // Fonction pour récupérer les données de classement d'un joueur
 export const fetchPlayerRankedData = async (playerId: string): Promise<RankedData | null> => {
   try {
+    console.log(`Appel API pour le joueur ${playerId}`);
     const response = await fetch(`${BASE_URL}/league/v4/entries/by-summoner/${playerId}?api_key=${API_KEY}`);
     
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Erreur API: ${response.status}`, errorText);
       throw new Error(`Erreur API: ${response.status}`);
     }
     
     const data: RankedData[] = await response.json();
+    console.log("Données brutes reçues:", data);
     
     // Filtrer pour ne garder que le mode RANKED_SOLO_5x5
     const soloQData = data.find(entry => entry.queueType === "RANKED_SOLO_5x5");
@@ -50,7 +55,8 @@ export const updatePlayerWithRankedData = (player: Player, rankedData: RankedDat
       rank: "",
       lp: 0,
       wins: 0,
-      losses: 0
+      losses: 0,
+      isLoading: false
     };
   }
 
@@ -60,7 +66,8 @@ export const updatePlayerWithRankedData = (player: Player, rankedData: RankedDat
     rank: rankedData.rank,
     lp: rankedData.leaguePoints,
     wins: rankedData.wins,
-    losses: rankedData.losses
+    losses: rankedData.losses,
+    isLoading: false
   };
 };
 

@@ -9,6 +9,7 @@ import {
   translateRank,
   calculateAdjustedLP
 } from '../services/api';
+import { ExternalLink } from 'lucide-react';
 
 interface PlayerCardProps {
   player: Player;
@@ -30,12 +31,36 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0 }: PlayerCardProps
     losses,
     opgg,
     twitch,
-    lpAdjustment
+    lpAdjustment,
+    isLoading,
+    error
   } = player;
   
   const winRate = formatWinRate(wins, losses);
   const tierClass = getTierClass(tier);
   const adjustedLP = calculateAdjustedLP(player);
+  
+  if (isLoading) {
+    return (
+      <div className="glass-card relative flex items-center p-4 rounded-lg shadow-md animate-pulse">
+        <div className="w-full">
+          <div className="h-6 bg-gray-200 rounded w-1/4 mb-2"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      </div>
+    );
+  }
+  
+  if (error) {
+    return (
+      <div className="glass-card relative flex items-center p-4 rounded-lg bg-red-50 border border-red-200">
+        <div className="ml-8">
+          <h3 className="text-xl font-bold tracking-tight">{pseudo}</h3>
+          <p className="text-red-500">{error}</p>
+        </div>
+      </div>
+    );
+  }
   
   return (
     <Link
@@ -120,21 +145,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0 }: PlayerCardProps
             onClick={(e) => e.stopPropagation()}
             className="text-blue-500 hover:text-blue-600 transition-colors"
           >
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              stroke="currentColor" 
-              strokeWidth="2" 
-              strokeLinecap="round" 
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <line x1="2" y1="12" x2="22" y2="12" />
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-            </svg>
+            <ExternalLink size={16} />
           </a>
         )}
       </div>

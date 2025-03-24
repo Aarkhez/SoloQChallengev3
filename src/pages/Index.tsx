@@ -13,6 +13,8 @@ const Index = () => {
     setIsReady(true);
   }, []);
 
+  console.log("Rendu de la page Index avec", PLAYERS.length, "joueurs");
+
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -35,7 +37,7 @@ const Index = () => {
           <div className="mt-12 bg-gray-50 rounded-lg p-6 shadow-inner animate-enter animate-enter-delay-5">
             <h2 className="text-2xl font-bold mb-4">Comment fonctionne le SoloQ Challenge ?</h2>
             <p className="text-gray-700 mb-4">
-              Le SoloQ Challenge est une compétition amicale entre 9 joueurs de League of Legends. Chaque joueur tente de grimper le plus haut possible en classement solo.
+              Le SoloQ Challenge est une compétition amicale entre joueurs de League of Legends. Chaque joueur tente de grimper le plus haut possible en classement solo.
             </p>
             <p className="text-gray-700 mb-4">
               Les scores sont ajustés selon un coefficient personnalisé pour chaque joueur, afin d'équilibrer les différences de niveau initial.
