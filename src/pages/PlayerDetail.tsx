@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -10,16 +11,23 @@ import {
   getTierClass, 
   translateTier, 
   translateRank, 
-  calculateAdjustedLP 
+  calculateAdjustedLP,
+  calculateRawLP
 } from '../services/api';
+import { getRemainingGames, getCurrentWeek, getRequiredGames } from '../utils/timeUtils';
 import { Player } from '../types/player';
 import { toast } from "sonner";
+import { Progress } from "@/components/ui/progress";
+import { AlertCircle, CheckCircle } from 'lucide-react';
 
 const PlayerDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [player, setPlayer] = useState<Player | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [progressValue, setProgressValue] = useState(0);
+  const currentWeek = getCurrentWeek();
+  const requiredGames = getRequiredGames(currentWeek);
 
   useEffect(() => {
     const fetchPlayerData = async () => {
@@ -39,6 +47,11 @@ const PlayerDetail = () => {
         
         setPlayer(updatedPlayer);
         setIsLoading(false);
+
+        // Mettre à jour la barre de progression pour les LP
+        if (updatedPlayer.tier !== "UNRANKED") {
+          setProgressValue(Math.min(updatedPlayer.lp, 100));
+        }
       } catch (error) {
         console.error("Erreur lors de la récupération des données du joueur:", error);
         toast.error("Impossible de récupérer les données du joueur. Veuillez réessayer plus tard.");
@@ -106,13 +119,16 @@ const PlayerDetail = () => {
     losses,
     opgg,
     twitch,
-    lpAdjustment
+    lpAdjustment,
+    gamesPlayed = 0
   } = player;
   
   const winRate = formatWinRate(wins, losses);
   const tierClass = getTierClass(tier);
   const adjustedLP = calculateAdjustedLP(player);
+  const rawLP = calculateRawLP(player);
   const totalGames = wins + losses;
+  const remainingGames = getRemainingGames(gamesPlayed);
   
   return (
     <div className="min-h-screen flex flex-col">
@@ -276,14 +292,41 @@ const PlayerDetail = () => {
               {/* Barre de progression pour le winrate */}
               {totalGames > 0 && (
                 <div className="mt-4">
-                  <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                    <div 
-                      className="bg-primary h-full" 
-                      style={{ width: `${(wins / totalGames) * 100}%` }}
-                    ></div>
-                  </div>
+                  <Progress value={(wins / totalGames) * 100} className="h-2" />
                 </div>
               )}
+              
+              {/* Objectif hebdomadaire */}
+              <h3 className="text-lg font-semibold mt-6 mb-2">Objectif Semaine {currentWeek}</h3>
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-gray-600">Parties à jouer</span>
+                <span className="font-medium">{requiredGames}</span>
+              </div>
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-gray-600">Parties jouées</span>
+                <span className="font-medium">{gamesPlayed}</span>
+              </div>
+              
+              {remainingGames > 0 ? (
+                <div className="flex items-center text-amber-500 mb-2">
+                  <AlertCircle size={16} className="mr-2" />
+                  <span className="font-medium">
+                    {remainingGames} parties manquantes
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center text-green-500 mb-2">
+                  <CheckCircle size={16} className="mr-2" />
+                  <span className="font-medium">
+                    Objectif hebdomadaire atteint
+                  </span>
+                </div>
+              )}
+              
+              <Progress 
+                value={(Math.min(gamesPlayed, requiredGames) / requiredGames) * 100} 
+                className="h-2"
+              />
             </div>
             
             <div className="glass-card rounded-lg p-6 animate-enter animate-enter-delay-2">
@@ -298,8 +341,8 @@ const PlayerDetail = () => {
                 </div>
                 
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-600">LP</span>
-                  <span className="font-medium">{lp}</span>
+                  <span className="text-gray-600">LP bruts</span>
+                  <span className="font-medium">{rawLP}</span>
                 </div>
                 
                 <div className="flex justify-between items-center">
@@ -316,12 +359,11 @@ const PlayerDetail = () => {
               {/* Barre de progression pour les LP */}
               {tier !== "UNRANKED" && (
                 <div className="mt-4">
-                  <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
-                    <div 
-                      className={`h-full ${tierClass}`} 
-                      style={{ width: `${Math.min(lp / 100, 1) * 100}%` }}
-                    ></div>
-                  </div>
+                  <p className="text-sm text-gray-600 mb-2">Progression dans la division actuelle</p>
+                  <Progress 
+                    value={progressValue} 
+                    className={`h-2 ${tierClass ? tierClass : ''}`}
+                  />
                   <div className="flex justify-between text-xs text-gray-500 mt-1">
                     <span>0 LP</span>
                     <span>100 LP</span>

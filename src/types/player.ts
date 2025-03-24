@@ -13,6 +13,7 @@ export interface Player {
   wins: number;
   losses: number;
   lpAdjustment: number;
+  gamesPlayed?: number; // Added for tracking weekly progress
   isLoading?: boolean;
   error?: string;
 }

@@ -10,7 +10,8 @@ import {
   calculateAdjustedLP,
   calculateRawLP
 } from '../services/api';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, AlertCircle } from 'lucide-react';
+import { getRemainingGames } from '../utils/timeUtils';
 
 interface PlayerCardProps {
   player: Player;
@@ -34,6 +35,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
     opgg,
     twitch,
     lpAdjustment,
+    gamesPlayed = 0,
     isLoading,
     error
   } = player;
@@ -42,6 +44,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
   const tierClass = getTierClass(tier);
   const adjustedLP = calculateAdjustedLP(player);
   const rawLP = calculateRawLP(player);
+  const remainingGames = getRemainingGames(gamesPlayed);
   
   if (isLoading) {
     return (
@@ -117,6 +120,23 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
                 Coefficient: {lpAdjustment}
               </div>
             )}
+            {/* Affichage des parties restantes */}
+            <div className="flex items-center mt-1">
+              {remainingGames > 0 ? (
+                <div className="flex items-center text-amber-500">
+                  <AlertCircle size={14} className="mr-1" />
+                  <span className="text-xs font-medium">
+                    {remainingGames} parties manquantes
+                  </span>
+                </div>
+              ) : (
+                <div className="flex items-center text-green-500">
+                  <span className="text-xs font-medium">
+                    Objectif atteint
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

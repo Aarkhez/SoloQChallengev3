@@ -56,9 +56,12 @@ export const updatePlayerWithRankedData = (player: Player, rankedData: RankedDat
       lp: 0,
       wins: 0,
       losses: 0,
+      gamesPlayed: 0,
       isLoading: false
     };
   }
+
+  const gamesPlayed = rankedData.wins + rankedData.losses;
 
   return {
     ...player,
@@ -67,6 +70,7 @@ export const updatePlayerWithRankedData = (player: Player, rankedData: RankedDat
     lp: rankedData.leaguePoints,
     wins: rankedData.wins,
     losses: rankedData.losses,
+    gamesPlayed: gamesPlayed,
     isLoading: false
   };
 };
@@ -78,8 +82,8 @@ export const calculateAdjustedLP = (player: Player): number => {
   const baseTierValue = tierValues[player.tier] || 0;
   const rankValue = getRankValue(player.rank);
   
-  // Calcul des LP ajustés: (Tier * 400 + Rank * 100 + LP) * lpAdjustment
-  const rawLP = (baseTierValue * 400) + (rankValue * 100) + player.lp;
+  // Calcul des LP ajustés: (Tier * 400 + RankValue + LP) * lpAdjustment
+  const rawLP = calculateRawLP(player);
   return Math.round(rawLP * player.lpAdjustment);
 };
 
@@ -88,19 +92,28 @@ export const calculateRawLP = (player: Player): number => {
   if (player.tier === "UNRANKED") return 0;
   
   const baseTierValue = tierValues[player.tier] || 0;
-  const rankValue = getRankValue(player.rank);
   
-  // Calcul des LP bruts: Tier * 400 + Rank * 100 + LP
-  return (baseTierValue * 400) + (rankValue * 100) + player.lp;
+  // Correction de la valeur de rang: IV = 0, III = 100, II = 200, I = 300
+  let rankValue = 0;
+  switch (player.rank) {
+    case "I": rankValue = 300; break;
+    case "II": rankValue = 200; break;
+    case "III": rankValue = 100; break;
+    case "IV": rankValue = 0; break;
+    default: rankValue = 0;
+  }
+  
+  // Calcul des LP bruts: Tier * 400 + RankValue + LP
+  return (baseTierValue * 400) + rankValue + player.lp;
 };
 
-// Fonction pour obtenir la valeur numérique du rang
+// Maintenue pour la compatibilité
 const getRankValue = (rank: string): number => {
   switch (rank) {
-    case "I": return 4;
-    case "II": return 3;
-    case "III": return 2;
-    case "IV": return 1;
+    case "I": return 3;
+    case "II": return 2;
+    case "III": return 1;
+    case "IV": return 0;
     default: return 0;
   }
 };

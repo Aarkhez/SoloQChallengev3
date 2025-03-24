@@ -3,10 +3,14 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Leaderboard from '../components/Leaderboard';
+import Timer from '../components/Timer';
 import { PLAYERS } from '../data/players';
+import { getCurrentWeek, getRequiredGames } from '../utils/timeUtils';
 
 const Index = () => {
   const [isReady, setIsReady] = useState(false);
+  const currentWeek = getCurrentWeek();
+  const requiredGames = getRequiredGames(currentWeek);
 
   // Animation à l'entrée
   useEffect(() => {
@@ -21,7 +25,7 @@ const Index = () => {
       
       <main className="flex-grow pt-32 px-6">
         <div className="max-w-4xl mx-auto">
-          <div className={`text-center mb-12 transform transition-all duration-700 ${isReady ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className={`text-center mb-8 transform transition-all duration-700 ${isReady ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               SoloQ Challenge
             </h1>
@@ -29,6 +33,9 @@ const Index = () => {
               Suivez en temps réel le classement des joueurs de League of Legends dans leur SoloQ Challenge
             </p>
           </div>
+          
+          {/* Timer Component */}
+          <Timer />
 
           <div className={`transition-all duration-700 delay-300 ${isReady ? 'opacity-100' : 'opacity-0'}`}>
             <Leaderboard players={PLAYERS} />
@@ -49,8 +56,18 @@ const Index = () => {
               <li><strong>Par classement</strong>: affiche le LP brut (non ajusté) basé uniquement sur le rang et les LP des joueurs</li>
               <li><strong>Par LP ajustés</strong>: affiche les LP multipliés par le coefficient personnalisé de chaque joueur</li>
             </ul>
-            <p className="text-gray-700">
+            <p className="text-gray-700 mb-4">
               Le classement est mis à jour automatiquement grâce à l'API Riot Games.
+            </p>
+            <h3 className="text-xl font-bold mt-6 mb-3">Objectif hebdomadaire</h3>
+            <p className="text-gray-700 mb-4">
+              Chaque joueur doit jouer <strong>20 parties par semaine</strong> pendant les 6 semaines du challenge.
+            </p>
+            <p className="text-gray-700 mb-4">
+              Pour la semaine {currentWeek}, les joueurs doivent avoir joué au moins <strong>{requiredGames} parties</strong>.
+            </p>
+            <p className="text-gray-700">
+              Le nombre de parties manquantes est affiché dans le classement pour chaque joueur.
             </p>
           </div>
         </div>
