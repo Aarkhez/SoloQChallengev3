@@ -1,6 +1,6 @@
 
 const END_DATE = new Date('2025-05-06T23:59:59');
-const START_DATE = new Date('2024-03-26T00:00:00'); // Assuming the challenge started on March 26, 2024
+const START_DATE = new Date('2025-03-25T00:00:00'); // Updated to March 25, 2025
 const WEEKS_TOTAL = 6;
 const GAMES_PER_WEEK = 20;
 

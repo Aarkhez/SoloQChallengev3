@@ -56,6 +56,17 @@ const Index = () => {
               <li><strong>Par classement</strong>: affiche le LP brut (non ajusté) basé uniquement sur le rang et les LP des joueurs</li>
               <li><strong>Par LP ajustés</strong>: affiche les LP multipliés par le coefficient personnalisé de chaque joueur</li>
             </ul>
+            
+            <h3 className="text-xl font-bold mt-6 mb-3">Cash Prize</h3>
+            <p className="text-gray-700 mb-4">
+              À la fin du challenge, les trois meilleurs joueurs du classement par LP ajustés remporteront:
+            </p>
+            <ul className="list-disc list-inside text-gray-700 mb-4">
+              <li><strong>1er prix</strong>: 50€</li>
+              <li><strong>2ème prix</strong>: 25€</li>
+              <li><strong>3ème prix</strong>: 15€</li>
+            </ul>
+            
             <p className="text-gray-700 mb-4">
               Le classement est mis à jour automatiquement grâce à l'API Riot Games.
             </p>

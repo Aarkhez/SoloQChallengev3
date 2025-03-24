@@ -10,8 +10,9 @@ import {
   calculateAdjustedLP,
   calculateRawLP
 } from '../services/api';
-import { ExternalLink, AlertCircle } from 'lucide-react';
+import { ExternalLink, AlertCircle, Trophy } from 'lucide-react';
 import { getRemainingGames } from '../utils/timeUtils';
+import { Badge } from "@/components/ui/badge";
 
 interface PlayerCardProps {
   player: Player;
@@ -20,6 +21,12 @@ interface PlayerCardProps {
   delay?: number;
   showRawLP?: boolean;
 }
+
+const CASH_PRIZES = {
+  1: "50€",
+  2: "25€",
+  3: "15€"
+};
 
 const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false }: PlayerCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -45,6 +52,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
   const adjustedLP = calculateAdjustedLP(player);
   const rawLP = calculateRawLP(player);
   const remainingGames = getRemainingGames(gamesPlayed);
+  const hasCashPrize = !showRawLP && rank <= 3;
   
   if (isLoading) {
     return (
@@ -80,7 +88,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
       style={animate ? { animationDelay: `${delay * 0.1}s` } : {}}
     >
       {/* Indicateur de rang */}
-      <div className="absolute -left-4 top-1/2 transform -translate-y-1/2 bg-primary text-white font-bold text-xl h-10 w-10 flex items-center justify-center rounded-full shadow-md">
+      <div className={`absolute -left-4 top-1/2 transform -translate-y-1/2 ${hasCashPrize ? 'bg-amber-500' : 'bg-primary'} text-white font-bold text-xl h-10 w-10 flex items-center justify-center rounded-full shadow-md`}>
         {rank}
       </div>
       
@@ -88,7 +96,14 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
       <div className="ml-8 flex-grow">
         <div className="flex flex-col md:flex-row md:items-center justify-between w-full">
           <div>
-            <h3 className="text-xl font-bold tracking-tight">{pseudo}</h3>
+            <div className="flex items-center">
+              <h3 className="text-xl font-bold tracking-tight">{pseudo}</h3>
+              {hasCashPrize && (
+                <Badge className="ml-2 bg-amber-100 text-amber-800 border border-amber-200 hover:bg-amber-200">
+                  <Trophy className="h-3 w-3 mr-1" /> {CASH_PRIZES[rank as 1 | 2 | 3]}
+                </Badge>
+              )}
+            </div>
             <div className="flex items-center mt-1 space-x-2">
               {tier && playerRank ? (
                 <span className={`tier-badge ${tierClass} bg-opacity-10 border border-opacity-30 border-current`}>
