@@ -7,7 +7,8 @@ import {
   getTierClass, 
   translateTier, 
   translateRank,
-  calculateAdjustedLP
+  calculateAdjustedLP,
+  calculateRawLP
 } from '../services/api';
 import { ExternalLink } from 'lucide-react';
 
@@ -16,9 +17,10 @@ interface PlayerCardProps {
   rank: number;
   animate?: boolean;
   delay?: number;
+  showRawLP?: boolean;
 }
 
-const PlayerCard = ({ player, rank, animate = true, delay = 0 }: PlayerCardProps) => {
+const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false }: PlayerCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const {
@@ -39,6 +41,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0 }: PlayerCardProps
   const winRate = formatWinRate(wins, losses);
   const tierClass = getTierClass(tier);
   const adjustedLP = calculateAdjustedLP(player);
+  const rawLP = calculateRawLP(player);
   
   if (isLoading) {
     return (
@@ -107,11 +110,13 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0 }: PlayerCardProps
           
           <div className="mt-3 md:mt-0 flex flex-col items-end">
             <div className="text-xl font-bold text-primary">
-              {adjustedLP} LP
+              {showRawLP ? rawLP : adjustedLP} LP
             </div>
-            <div className="text-xs text-gray-500">
-              Coefficient: {lpAdjustment}
-            </div>
+            {!showRawLP && (
+              <div className="text-xs text-gray-500">
+                Coefficient: {lpAdjustment}
+              </div>
+            )}
           </div>
         </div>
       </div>

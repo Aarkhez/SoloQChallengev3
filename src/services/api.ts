@@ -79,7 +79,19 @@ export const calculateAdjustedLP = (player: Player): number => {
   const rankValue = getRankValue(player.rank);
   
   // Calcul des LP ajustés: (Tier * 400 + Rank * 100 + LP) * lpAdjustment
-  return Math.round(((baseTierValue * 400) + (rankValue * 100) + player.lp) * player.lpAdjustment);
+  const rawLP = (baseTierValue * 400) + (rankValue * 100) + player.lp;
+  return Math.round(rawLP * player.lpAdjustment);
+};
+
+// Fonction pour calculer les LP bruts (sans coefficient) pour le tri par classement
+export const calculateRawLP = (player: Player): number => {
+  if (player.tier === "UNRANKED") return 0;
+  
+  const baseTierValue = tierValues[player.tier] || 0;
+  const rankValue = getRankValue(player.rank);
+  
+  // Calcul des LP bruts: Tier * 400 + Rank * 100 + LP
+  return (baseTierValue * 400) + (rankValue * 100) + player.lp;
 };
 
 // Fonction pour obtenir la valeur numérique du rang

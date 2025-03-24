@@ -2,9 +2,21 @@
 import { useState, useEffect } from 'react';
 import PlayerCard from './PlayerCard';
 import { Player } from '../types/player';
-import { fetchPlayerRankedData, updatePlayerWithRankedData, calculateAdjustedLP } from '../services/api';
+import { 
+  fetchPlayerRankedData, 
+  updatePlayerWithRankedData, 
+  calculateAdjustedLP,
+  calculateRawLP
+} from '../services/api';
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
+import { 
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface LeaderboardProps {
   players: Player[];
@@ -15,6 +27,7 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
     initialPlayers.map(player => ({ ...player, isLoading: true }))
   );
   const [isLoading, setIsLoading] = useState(true);
+  const [sortMethod, setSortMethod] = useState<'adjusted' | 'rank'>('rank');
 
   useEffect(() => {
     const fetchAllPlayersData = async () => {
@@ -39,10 +52,8 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
           })
         );
 
-        // Trier les joueurs par LP ajustés
-        const sortedPlayers = [...updatedPlayers].sort(
-          (a, b) => calculateAdjustedLP(b) - calculateAdjustedLP(a)
-        );
+        // Tri initial par rang (LP bruts)
+        const sortedPlayers = sortPlayersByMethod(updatedPlayers, 'rank');
 
         console.log("Joueurs triés:", sortedPlayers);
         setPlayers(sortedPlayers);
@@ -56,6 +67,22 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
 
     fetchAllPlayersData();
   }, []);
+
+  // Fonction pour trier les joueurs selon la méthode choisie
+  const sortPlayersByMethod = (playersList: Player[], method: 'adjusted' | 'rank'): Player[] => {
+    if (method === 'adjusted') {
+      return [...playersList].sort((a, b) => calculateAdjustedLP(b) - calculateAdjustedLP(a));
+    } else {
+      return [...playersList].sort((a, b) => calculateRawLP(b) - calculateRawLP(a));
+    }
+  };
+
+  // Gestionnaire de changement de méthode de tri
+  const handleSortMethodChange = (value: 'adjusted' | 'rank') => {
+    setSortMethod(value);
+    const sortedPlayers = sortPlayersByMethod(players, value);
+    setPlayers(sortedPlayers);
+  };
 
   if (isLoading) {
     return (
@@ -80,12 +107,28 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
 
   return (
     <div className="space-y-4 mt-8">
+      <div className="flex justify-end mb-4">
+        <Select 
+          value={sortMethod}
+          onValueChange={(value) => handleSortMethodChange(value as 'adjusted' | 'rank')}
+        >
+          <SelectTrigger className="w-[200px]">
+            <SelectValue placeholder="Méthode de tri" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="rank">Par classement</SelectItem>
+            <SelectItem value="adjusted">Par LP ajustés</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      
       {players.map((player, index) => (
         <PlayerCard 
           key={player.id} 
           player={player} 
           rank={index + 1}
           delay={index} 
+          showRawLP={sortMethod === 'rank'}
         />
       ))}
     </div>

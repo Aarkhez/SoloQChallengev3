@@ -42,6 +42,13 @@ const Index = () => {
             <p className="text-gray-700 mb-4">
               Les scores sont ajustés selon un coefficient personnalisé pour chaque joueur, afin d'équilibrer les différences de niveau initial.
             </p>
+            <p className="text-gray-700 mb-4">
+              Vous pouvez trier le classement de deux façons:
+            </p>
+            <ul className="list-disc list-inside text-gray-700 mb-4">
+              <li><strong>Par classement</strong>: affiche le LP brut (non ajusté) basé uniquement sur le rang et les LP des joueurs</li>
+              <li><strong>Par LP ajustés</strong>: affiche les LP multipliés par le coefficient personnalisé de chaque joueur</li>
+            </ul>
             <p className="text-gray-700">
               Le classement est mis à jour automatiquement grâce à l'API Riot Games.
             </p>
