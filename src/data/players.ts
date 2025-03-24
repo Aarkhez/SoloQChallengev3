@@ -95,7 +95,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.98,
-    icon: "",
+    icon: "/assets/icon_player/default.webp",
   },
   {
     id: 7,
@@ -115,7 +115,7 @@ export const PLAYERS: Player[] = [
   },
   {
     id: 8,
-    name: "Babos",
+    name: "Shashoca",
     pseudo: "Top Lane Tyrant",
     tag: "3226",
     idLol: "EpQ_SCJNN3QDZCgWbvpJ2h6IscuyXjj2NBDxB4ZMrw3aJV5wssh08Fmx7w",
@@ -127,7 +127,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.91,
-    icon: "/assets/icon_player/babos.webp",
+    icon: "/assets/icon_player/shashoca.webp",
   },
   {
     id: 9,
@@ -143,7 +143,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.92,
-    icon: "",
+    icon: "/assets/icon_player/default.webp",
   },
 ];
 

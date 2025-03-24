@@ -34,6 +34,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
   const {
     id, 
     pseudo,
+    icon,
     tag,
     tier, 
     rank: playerRank, 
@@ -88,13 +89,16 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
       onMouseLeave={() => setIsHovered(false)}
       style={animate ? { animationDelay: `${delay * 0.1}s` } : {}}
     >
-      {/* Indicateur de rang */}
-      <div className={`absolute -left-2 top-1/2 transform -translate-y-1/2 ${hasCashPrize ? 'bg-amber-500' : 'bg-primary'} text-white font-bold text-xl h-10 w-10 flex items-center justify-center rounded-full shadow-md`}>
+        <div className="absolute top-0 left-0 bg-primary text-white px-1 py-1 rounded-br-lg text-xl font-semibold">
         {rank}
+  </div>
+      {/* Indicateur de rang */}
+      <div className="absolute top-1/2 transform -translate-y-1/2" >
+      <img src={icon} className="w-10 h-10 rounded-full" />
       </div>
       
       {/* Contenu principal */}
-      <div className="ml-8 flex-grow">
+      <div className="ml-12 flex-grow">
         <div className="flex flex-col md:flex-row md:items-center justify-between w-full">
           <div>
             <div className="flex items-center">
