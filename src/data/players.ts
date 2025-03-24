@@ -15,7 +15,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.87,
-    icon: "../public/assets/icon_player/arkhez.webp",
+    icon: "/assets/icon_player/arkhez.webp",
   },
   {
     id: 2,
@@ -31,7 +31,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.94,
-    icon: "../public/assets/icon_player/zirpop.webp",
+    icon: "/assets/icon_player/zirpop.webp",
   },
   {
     id: 3,
@@ -47,11 +47,11 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.83,
-    icon: "../public/assets/icon_player/viat.webp",
+    icon: "/assets/icon_player/viat.webp",
   },
   {
     id: 4,
-    icon: "../public/assets/icon_player/raiden.webp",
+    icon: "/assets/icon_player/raiden.webp",
     name: "Raiden",
     pseudo: "Estilyemos",
     tag: "3025",
@@ -79,7 +79,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.94,
-    icon: "../public/assets/icon_player/slash.webp",
+    icon: "/assets/icon_player/slash.webp",
   },
   {
     id: 6,
@@ -111,7 +111,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.84,
-    icon: "../public/assets/icon_player/mastos.webp",
+    icon: "/assets/icon_player/mastos.webp",
   },
   {
     id: 8,
@@ -127,7 +127,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.91,
-    icon: "../public/assets/icon_player/babos.webp",
+    icon: "/assets/icon_player/babos.webp",
   },
   {
     id: 9,
