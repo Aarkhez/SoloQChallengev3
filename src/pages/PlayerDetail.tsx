@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
@@ -14,7 +13,7 @@ import {
   calculateAdjustedLP 
 } from '../services/api';
 import { Player } from '../types/player';
-import { toast } from '@/components/ui/sonner';
+import { toast } from "sonner";
 
 const PlayerDetail = () => {
   const { id } = useParams<{ id: string }>();

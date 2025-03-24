@@ -1,9 +1,8 @@
-
 import { useState, useEffect } from 'react';
 import PlayerCard from './PlayerCard';
 import { Player } from '../types/player';
 import { fetchPlayerRankedData, updatePlayerWithRankedData, calculateAdjustedLP } from '../services/api';
-import { toast } from '@/components/ui/sonner';
+import { toast } from "sonner";
 
 interface LeaderboardProps {
   players: Player[];
