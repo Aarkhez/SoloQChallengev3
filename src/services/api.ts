@@ -3,7 +3,7 @@ import { Player, RankedData } from '../types/player';
 import { toast } from "sonner";
 
 // Clé API Riot Games - Remarque: cette clé expire après 24h
-const API_KEY = "RGAPI-ba232415-8577-401b-b933-1214883b5a15";
+const API_KEY = import.meta.env.VITE_API_LOLKEY;
 const BASE_URL = "https://euw1.api.riotgames.com/lol";
 
 // Convertir une valeur de tier à un nombre pour le tri

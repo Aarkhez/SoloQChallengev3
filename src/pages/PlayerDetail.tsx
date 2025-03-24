@@ -111,6 +111,7 @@ const PlayerDetail = () => {
   
   const {
     pseudo,
+    icon,
     name,
     tier,
     rank: playerRank,
@@ -162,9 +163,7 @@ const PlayerDetail = () => {
             <div className="flex flex-col md:flex-row items-center md:items-start">
               <div className="mr-0 md:mr-8 mb-6 md:mb-0 text-center md:text-left">
                 <div className="w-24 h-24 flex items-center justify-center rounded-full bg-primary/10 mb-4 mx-auto md:mx-0">
-                  <span className="text-4xl font-bold text-primary">
-                    {pseudo.charAt(0).toUpperCase()}
-                  </span>
+                  <img src={icon} alt={`${pseudo}'s icon`} className="w-24 h-24 rounded-full" />
                 </div>
               </div>
               

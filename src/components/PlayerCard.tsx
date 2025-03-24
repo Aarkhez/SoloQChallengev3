@@ -33,7 +33,8 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
   
   const {
     id, 
-    pseudo, 
+    pseudo,
+    tag,
     tier, 
     rank: playerRank, 
     lp, 
@@ -97,7 +98,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
         <div className="flex flex-col md:flex-row md:items-center justify-between w-full">
           <div>
             <div className="flex items-center">
-              <h3 className="text-xl font-bold tracking-tight">{pseudo}</h3>
+              <h3 className="text-xl font-bold tracking-tight">{pseudo}<span className='text-sm font-semibold text-gray-500'> #{tag}</span></h3>
               {hasCashPrize && (
                 <Badge className="ml-2 bg-amber-100 text-amber-800 border border-amber-200 hover:bg-amber-200">
                   <Trophy className="h-3 w-3 mr-1" /> {CASH_PRIZES[rank as 1 | 2 | 3]}

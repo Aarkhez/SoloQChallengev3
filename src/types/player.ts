@@ -3,6 +3,7 @@ export interface Player {
   id: number;
   name: string;
   pseudo: string;
+  icon: string;
   tag: string;
   idLol: string;
   twitch: string;
