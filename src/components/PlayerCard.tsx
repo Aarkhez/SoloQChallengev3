@@ -88,7 +88,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
       style={animate ? { animationDelay: `${delay * 0.1}s` } : {}}
     >
       {/* Indicateur de rang */}
-      <div className={`absolute -left-4 top-1/2 transform -translate-y-1/2 ${hasCashPrize ? 'bg-amber-500' : 'bg-primary'} text-white font-bold text-xl h-10 w-10 flex items-center justify-center rounded-full shadow-md`}>
+      <div className={`absolute -left-2 top-1/2 transform -translate-y-1/2 ${hasCashPrize ? 'bg-amber-500' : 'bg-primary'} text-white font-bold text-xl h-10 w-10 flex items-center justify-center rounded-full shadow-md`}>
         {rank}
       </div>
       
@@ -126,7 +126,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
             </div>
           </div>
           
-          <div className="mt-3 md:mt-0 flex flex-col items-end">
+          <div className="mt-3 flex flex-col items-end">
             <div className="text-xl font-bold text-primary">
               {showRawLP ? rawLP : adjustedLP} LP
             </div>

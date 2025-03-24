@@ -23,7 +23,6 @@ export const tierValues: Record<string, number> = {
 // Fonction pour récupérer les données de classement d'un joueur
 export const fetchPlayerRankedData = async (playerId: string): Promise<RankedData | null> => {
   try {
-    console.log(`Appel API pour le joueur ${playerId}`);
     const response = await fetch(`${BASE_URL}/league/v4/entries/by-summoner/${playerId}?api_key=${API_KEY}`);
     
     if (!response.ok) {
@@ -33,7 +32,6 @@ export const fetchPlayerRankedData = async (playerId: string): Promise<RankedDat
     }
     
     const data: RankedData[] = await response.json();
-    console.log("Données brutes reçues:", data);
     
     // Filtrer pour ne garder que le mode RANKED_SOLO_5x5
     const soloQData = data.find(entry => entry.queueType === "RANKED_SOLO_5x5");

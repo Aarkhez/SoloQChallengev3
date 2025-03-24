@@ -17,8 +17,6 @@ const Index = () => {
     setIsReady(true);
   }, []);
 
-  console.log("Rendu de la page Index avec", PLAYERS.length, "joueurs");
-
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -66,16 +64,9 @@ const Index = () => {
               <li><strong>2ème prix</strong>: 25€</li>
               <li><strong>3ème prix</strong>: 15€</li>
             </ul>
-            
-            <p className="text-gray-700 mb-4">
-              Le classement est mis à jour automatiquement grâce à l'API Riot Games.
-            </p>
             <h3 className="text-xl font-bold mt-6 mb-3">Objectif hebdomadaire</h3>
             <p className="text-gray-700 mb-4">
               Chaque joueur doit jouer <strong>20 parties par semaine</strong> pendant les 6 semaines du challenge.
-            </p>
-            <p className="text-gray-700 mb-4">
-              Pour la semaine {currentWeek}, les joueurs doivent avoir joué au moins <strong>{requiredGames} parties</strong>.
             </p>
             <p className="text-gray-700">
               Le nombre de parties manquantes est affiché dans le classement pour chaque joueur.

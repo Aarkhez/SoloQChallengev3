@@ -32,14 +32,11 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
   useEffect(() => {
     const fetchAllPlayersData = async () => {
       try {
-        console.log("Début du chargement des données joueurs...");
         
         const updatedPlayers = await Promise.all(
           players.map(async (player) => {
             try {
-              console.log(`Récupération des données pour ${player.pseudo}...`);
               const rankedData = await fetchPlayerRankedData(player.idLol);
-              console.log(`Données récupérées pour ${player.pseudo}:`, rankedData);
               return updatePlayerWithRankedData(player, rankedData);
             } catch (error) {
               console.error(`Erreur lors de la récupération des données pour ${player.pseudo}:`, error);
@@ -55,7 +52,6 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
         // Tri initial par rang (LP bruts)
         const sortedPlayers = sortPlayersByMethod(updatedPlayers, 'rank');
 
-        console.log("Joueurs triés:", sortedPlayers);
         setPlayers(sortedPlayers);
         setIsLoading(false);
       } catch (error) {

@@ -98,16 +98,16 @@
   border-radius: 0.375rem;
 }
 
-.tier-badge.iron { color: #5D4037; }
-.tier-badge.bronze { color: #8D6E63; }
-.tier-badge.silver { color: #78909C; }
-.tier-badge.gold { color: #FFA000; }
-.tier-badge.platinum { color: #26A69A; }
-.tier-badge.emerald { color: #2E7D32; }
-.tier-badge.diamond { color: #42A5F5; }
-.tier-badge.master { color: #9C27B0; }
+.tier-badge.iron { color: #8D6E63; } 
+.tier-badge.bronze { color: #A56E56; }
+.tier-badge.silver { color: #90A4AE; } 
+.tier-badge.gold { color: #FFB300; } 
+.tier-badge.platinum { color: #00BFAE; } 
+.tier-badge.emerald { color: #388E3C; }
+.tier-badge.diamond { color: #42A5F5; } 
+.tier-badge.master { color: #8E24AA; } 
 .tier-badge.grandmaster { color: #D32F2F; }
-.tier-badge.challenger { color: #FFC107; }
+.tier-badge.challenger { color: #FF8F00; }
 
 /* Skeletons */
 .skeleton {
