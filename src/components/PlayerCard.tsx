@@ -89,11 +89,11 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
       onMouseLeave={() => setIsHovered(false)}
       style={animate ? { animationDelay: `${delay * 0.1}s` } : {}}
     >
-        <div className="absolute top-0 left-0 bg-primary text-white px-1 py-1 rounded-br-lg text-xl font-semibold">
+        <div className={`absolute top-0 left-0 text-white px-1 py-1 rounded-br-lg text-xl font-semibold ${hasCashPrize ? 'bg-amber-500' : 'bg-primary'}`}>
         {rank}
   </div>
       {/* Indicateur de rang */}
-      <div className={`absolute top-1/2 transform -translate-y-1/2 ${hasCashPrize ? 'bg-amber-500' : 'bg-primary'}`}>
+      <div className={`absolute top-1/2 transform -translate-y-1/2`}>
       <img src={icon} className="w-10 h-10 rounded-full" />
       </div>
       
