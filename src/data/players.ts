@@ -83,7 +83,7 @@ export const PLAYERS: Player[] = [
   },
   {
     id: 6,
-    name: "Rubix",
+    name: "Tordy",
     pseudo: "Seinshin Akuma",
     tag: "7384",
     idLol: "LCPjmNVhERyRyosQVGhYpaPMdK0yr09DkxJ0NY5GsNyvRmnXz3vFulvy6w",
@@ -95,7 +95,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.98,
-    icon: "/assets/icon_player/default.webp",
+    icon: "/assets/icon_player/tordy.webp",
   },
   {
     id: 7,
