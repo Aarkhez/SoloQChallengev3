@@ -143,7 +143,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.92,
-    icon: "/assets/icon_player/default.webp",
+    icon: "/assets/icon_player/watson.webp",
   },
 ];
 
