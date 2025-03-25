@@ -93,7 +93,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
         {rank}
   </div>
       {/* Indicateur de rang */}
-      <div className="absolute top-1/2 transform -translate-y-1/2" >
+      <div className={`absolute top-1/2 transform -translate-y-1/2 ${hasCashPrize ? 'bg-amber-500' : 'bg-primary'}`}>
       <img src={icon} className="w-10 h-10 rounded-full" />
       </div>
       
