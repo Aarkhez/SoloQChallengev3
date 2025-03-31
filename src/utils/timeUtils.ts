@@ -1,5 +1,5 @@
 
-const END_DATE = new Date('2025-05-07T00:59:59');
+const END_DATE = new Date('2025-05-07T23:59:59');
 const START_DATE = new Date('2025-03-25T00:00:00'); // Updated to March 25, 2025
 const WEEKS_TOTAL = 6;
 const GAMES_PER_WEEK = 20;
