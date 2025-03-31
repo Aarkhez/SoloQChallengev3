@@ -19,7 +19,7 @@ export const getTimeRemaining = () => {
 
 export const getCurrentWeek = () => {
   const now = new Date();
-  const timeSinceStart = now.getTime() - START_DATE.getTime();
+  const timeSinceStart = now.getTime() - START_DATE.getTime() + (1 * 60 * 60 * 1000);
   const weeksPassed = Math.min(
     Math.floor(timeSinceStart / (7 * 24 * 60 * 60 * 1000)),
     WEEKS_TOTAL - 1
