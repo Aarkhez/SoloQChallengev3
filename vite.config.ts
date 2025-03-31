@@ -8,11 +8,12 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: "::",
     port: 8080,
+    // historyApiFallback: true, // Supprimé car non supporté par Vite
   },
+  base: '/', // Ajouté pour clarifier le déploiement à la racine
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    mode === 'development' && componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
