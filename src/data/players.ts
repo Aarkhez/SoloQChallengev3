@@ -115,7 +115,7 @@ export const PLAYERS: Player[] = [
   },
   {
     id: 8,
-    name: "Shashoca",
+    name: "Shachoca",
     pseudo: "Top Lane Tyrant",
     tag: "3226",
     idLol: "EpQ_SCJNN3QDZCgWbvpJ2h6IscuyXjj2NBDxB4ZMrw3aJV5wssh08Fmx7w",
