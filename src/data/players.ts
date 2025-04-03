@@ -40,7 +40,7 @@ export const PLAYERS: Player[] = [
     tag: "SNAKE",
     idLol: "wcF4j8fvZ2UmWl2W9_apZG7juW5DNOZAnRK-9aJEMmVGzc56gQqhpBw2Mw",
     twitch: "https://www.twitch.tv/viattv",
-    opgg: "https://www.op.gg/summoners/euw/SnakeWithPaqueta-PUFF",
+    opgg: "https://www.op.gg/summoners/euw/QuesadilasFliper-SNAKE",
     tier: "",
     rank: "",
     lp: 0,
