@@ -152,7 +152,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
               ) : (
                 <div className="flex items-center text-green-500">
                   <span className="text-xs font-medium">
-                    Objectif atteint
+                    Objectif hebdomadaire atteint
                   </span>
                 </div>
               )}
