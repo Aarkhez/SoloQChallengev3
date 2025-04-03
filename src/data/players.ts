@@ -36,9 +36,9 @@ export const PLAYERS: Player[] = [
   {
     id: 3,
     name: "Viat",
-    pseudo: "SnakeWithPaqueta",
-    tag: "PUFF",
-    idLol: "3R3XzYwmmriChfNOjLobS2z2cJwOptXx4a8j0KzxTPngav_mFYzebMdpKw",
+    pseudo: "QuesadilasFliper",
+    tag: "SNAKE",
+    idLol: "wcF4j8fvZ2UmWl2W9_apZG7juW5DNOZAnRK-9aJEMmVGzc56gQqhpBw2Mw",
     twitch: "https://www.twitch.tv/viattv",
     opgg: "https://www.op.gg/summoners/euw/SnakeWithPaqueta-PUFF",
     tier: "",
