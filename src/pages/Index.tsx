@@ -51,7 +51,7 @@ const Index = () => {
               Vous pouvez trier le classement de deux façons:
             </p>
             <ul className="list-disc list-inside text-gray-700 mb-4">
-              <li><strong>Par classement</strong>: affiche le LP brut (non ajusté) basé uniquement sur le rang et les LP des joueurs</li>
+              <li><strong>Par classement</strong>: affiche les LP brut (non ajusté) basé uniquement sur le rang et les LP des joueurs</li>
               <li><strong>Par LP ajustés</strong>: affiche les LP multipliés par le coefficient personnalisé de chaque joueur</li>
             </ul>
             
@@ -66,7 +66,7 @@ const Index = () => {
             </ul>
             <h3 className="text-xl font-bold mt-6 mb-3">Objectif hebdomadaire</h3>
             <p className="text-gray-700 mb-4">
-              Chaque joueur doit jouer <strong>20 parties par semaine</strong> pendant les 6 semaines du challenge.
+              Chaque joueur doit jouer <strong>40 parties maximum par semaine</strong> pendant les 6 semaines du challenge.
             </p>
             <p className="text-gray-700">
               Le nombre de parties manquantes est affiché dans le classement pour chaque joueur.

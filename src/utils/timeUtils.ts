@@ -1,14 +1,12 @@
-
 const END_DATE = new Date('2025-05-06T23:59:59');
-const START_DATE = new Date('2025-03-25T00:00:00'); // Updated to March 25, 2025
+const START_DATE = new Date('2025-03-25T00:00:00');
 const WEEKS_TOTAL = 6;
-const GAMES_PER_WEEK = 20;
+const TOTAL_GAMES = 120;
 
 export const getTimeRemaining = () => {
   const now = new Date();
   const timeRemaining = END_DATE.getTime() - now.getTime();
   
-  // Convert to days, hours, minutes, seconds
   const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
   const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
@@ -25,11 +23,34 @@ export const getCurrentWeek = () => {
     WEEKS_TOTAL - 1
   );
   
-  return Math.max(0, weeksPassed + 1); // +1 because we want week number (1-indexed)
+  return Math.max(0, weeksPassed + 1);
+};
+
+// Définit les games requis par semaine
+const getGamesPerWeek = (week: number) => {
+  switch(week) {
+    case 1:
+      return 20;
+    case 2:
+      return 20;
+    case 5:
+    case 3:
+      return 40;
+    case 4:
+      return 40;
+    case 6:
+      return 0;
+    default:
+      return 0;
+  }
 };
 
 export const getRequiredGames = (currentWeek: number) => {
-  return currentWeek * GAMES_PER_WEEK;
+  let totalRequired = 0;
+  for (let i = 1; i <= currentWeek; i++) {
+    totalRequired += getGamesPerWeek(i);
+  }
+  return Math.min(totalRequired, TOTAL_GAMES);
 };
 
 export const getRemainingGames = (gamesPlayed: number) => {

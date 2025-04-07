@@ -110,7 +110,7 @@ export const PLAYERS: Player[] = [
     lp: 0,
     wins: 0,
     losses: 0,
-    lpAdjustment: 0.84,
+    lpAdjustment: 0.78,
     icon: "/assets/icon_player/mastos.webp",
   },
   {
