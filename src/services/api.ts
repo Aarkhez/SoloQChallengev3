@@ -93,14 +93,15 @@ export const calculateRawLP = (player: Player): number => {
   
   // Correction de la valeur de rang: IV = 0, III = 100, II = 200, I = 300
   let rankValue = 0;
-  switch (player.rank) {
-    case "I": rankValue = 300; break;
-    case "II": rankValue = 200; break;
-    case "III": rankValue = 100; break;
-    case "IV": rankValue = 0; break;
-    default: rankValue = 0;
+  if (player.tier !== "MASTER" && player.tier !== "GRANDMASTER" && player.tier !== "CHALLENGER") {
+    switch (player.rank) {
+      case "I": rankValue = 300; break;
+      case "II": rankValue = 200; break;
+      case "III": rankValue = 100; break;
+      case "IV": rankValue = 0; break;
+      default: rankValue = 0;
+    }
   }
-  
   // Calcul des LP bruts: Tier * 400 + RankValue + LP
   return (baseTierValue * 400) + rankValue + player.lp;
 };
