@@ -67,7 +67,7 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
   // Fonction pour trier les joueurs selon la méthode choisie
   const sortPlayersByMethod = (playersList: Player[], method: 'adjusted' | 'rank'): Player[] => {
     if (method === 'adjusted') {
-      return [...playersList].sort((a, b) => calculateAdjustedLP(b) - calculateAdjustedLP(a));
+      return [...playersList].sort((a, b) => calculateAdjustedLP(b) - calculateAdjustedLP(a)).filter(player => !player.isDisqualified);
     } else {
       return [...playersList].sort((a, b) => calculateRawLP(b) - calculateRawLP(a));
     }

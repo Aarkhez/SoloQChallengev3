@@ -17,6 +17,7 @@ export interface Player {
   gamesPlayed?: number; // Added for tracking weekly progress
   isLoading?: boolean;
   error?: string;
+  isDisqualified?: boolean; // Added for tracking disqualified players
 }
 
 export interface RankedData {
@@ -32,6 +33,7 @@ export interface RankedData {
   inactive: boolean;
   freshBlood: boolean;
   hotStreak: boolean;
+  isDisqualified: boolean; // Added for tracking disqualified players
 }
 
 export default Player;
