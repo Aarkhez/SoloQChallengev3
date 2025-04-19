@@ -80,6 +80,7 @@ export const calculateAdjustedLP = (player: Player): number => {
   const baseTierValue = tierValues[player.tier] || 0;
   const rankValue = getRankValue(player.rank);
   
+  if(player.isDisqualified) return 0;
   // Calcul des LP ajustés: (Tier * 400 + RankValue + LP) * lpAdjustment
   const rawLP = calculateRawLP(player);
   return Math.round(rawLP * player.lpAdjustment);
