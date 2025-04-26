@@ -59,18 +59,19 @@ export const updatePlayerWithRankedData = (player: Player, rankedData: RankedDat
     };
   }
 
-  const gamesPlayed = rankedData.wins + rankedData.losses;
-
+  
   return {
     ...player,
     tier: rankedData.tier,
-    rank: rankedData.rank,
-    lp: rankedData.leaguePoints,
-    wins: rankedData.wins,
-    losses: rankedData.losses,
-    gamesPlayed: gamesPlayed,
+    rank: player.rank || rankedData.rank,
+    lp: player.lp || rankedData.leaguePoints,
+    wins: player.wins || rankedData.wins,
+    losses: player.losses || rankedData.losses,
+    gamesPlayed: (player.wins + player.losses) || (rankedData.wins + rankedData.losses),
     isLoading: false
-  };
+    };
+
+  
 };
 
 // Fonction pour calculer les LP ajustés (avec le coefficient lpAdjustment)
