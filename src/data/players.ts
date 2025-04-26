@@ -33,7 +33,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.94,
     icon: "/assets/icon_player/zirpop.webp",
-    isDisqualified: false,
+    isDisqualified: true,
   },
   {
     id: 3,
@@ -135,7 +135,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.91,
     icon: "/assets/icon_player/shashoca.webp",
-    isDisqualified: false,
+    isDisqualified: true,
   },
   {
     id: 9,
