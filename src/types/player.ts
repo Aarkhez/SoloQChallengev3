@@ -8,6 +8,7 @@ export interface Player {
   idLol: string;
   twitch: string;
   opgg: string;
+  teamId?: number;
   tier: string;
   rank: string;
   lp: number;

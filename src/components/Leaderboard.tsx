@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import PlayerCard from './PlayerCard';
 import { Player } from '../types/player';
+import { TEAMS } from '../data/teams';
 import { 
   fetchPlayerRankedData, 
   updatePlayerWithRankedData, 
@@ -125,6 +126,7 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
           rank={index + 1}
           delay={index} 
           showRawLP={sortMethod === 'rank'}
+          teamName={player.teamId ? TEAMS.find(t => t.id === player.teamId)?.name : undefined}
         />
       ))}
     </div>

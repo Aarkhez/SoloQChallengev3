@@ -5,8 +5,7 @@ import { Player } from '../types/player';
 import { 
   formatWinRate, 
   getTierClass, 
-  translateTier, 
-  translateRank,
+  formatTierRank,
   calculateAdjustedLP,
   calculateRawLP
 } from '../services/api';
@@ -20,15 +19,16 @@ interface PlayerCardProps {
   animate?: boolean;
   delay?: number;
   showRawLP?: boolean;
+  teamName?: string;
 }
 
 const CASH_PRIZES = {
-  1: "50€",
-  2: "25€",
-  3: "15€"
+  1: "30€",
+  2: "20€",
+  3: "10€"
 };
 
-const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false }: PlayerCardProps) => {
+const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false, teamName }: PlayerCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const {
@@ -105,6 +105,9 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
               <h3 className="text-xl font-bold tracking-tight">
                 {pseudo}
                 <span className="text-sm font-semibold text-gray-500"> #{tag}</span>
+                {teamName && (
+                  <span className="text-sm font-medium text-gray-500 ml-2">· {teamName}</span>
+                )}
                 {player.isDisqualified && (
                   <span className="py-1 px-1 font-semibold rounded-md text-xs bg-red-100 text-red-800 border border-red-200 ml-2">
                     Disqualifié
@@ -118,9 +121,9 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, showRawLP = false
               )}
             </div>
             <div className="flex items-center mt-1 space-x-2">
-              {tier && playerRank ? (
+              {tier && tier !== "UNRANKED" ? (
                 <span className={`tier-badge ${tierClass} bg-opacity-10 border border-opacity-30 border-current`}>
-                  {translateTier(tier)} {translateRank(playerRank)}
+                  {formatTierRank(tier, playerRank)}
                 </span>
               ) : (
                 <span className="tier-badge bg-gray-100 text-gray-500">

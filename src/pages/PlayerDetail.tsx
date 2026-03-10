@@ -4,13 +4,13 @@ import { useParams, Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { PLAYERS } from '../data/players';
+import { TEAMS } from '../data/teams';
 import { 
   fetchPlayerRankedData, 
   updatePlayerWithRankedData, 
   formatWinRate, 
   getTierClass, 
-  translateTier, 
-  translateRank, 
+  formatTierRank,
   calculateAdjustedLP,
   calculateRawLP
 } from '../services/api';
@@ -174,11 +174,21 @@ const PlayerDetail = () => {
                 <p className="text-gray-500 mb-4 text-center md:text-left">
                   {name}
                 </p>
-                
+                {player.teamId && (
+                  <p className="text-sm text-gray-600 mb-4 text-center md:text-left">
+                    Équipe :{' '}
+                    <Link
+                      to="/teams"
+                      className="font-medium text-primary hover:underline"
+                    >
+                      {TEAMS.find((t) => t.id === player.teamId)?.name ?? '—'}
+                    </Link>
+                  </p>
+                )}
                 <div className="flex flex-wrap justify-center md:justify-start gap-3 mb-6">
-                  {tier && playerRank ? (
+                  {tier && tier !== "UNRANKED" ? (
                     <div className={`text-lg font-semibold ${tierClass}`}>
-                      {translateTier(tier)} {translateRank(playerRank)}
+                      {formatTierRank(tier, playerRank)}
                     </div>
                   ) : (
                     <div className="text-lg font-semibold text-gray-500">
@@ -335,7 +345,7 @@ const PlayerDetail = () => {
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">Division</span>
                   <span className={`font-medium ${tierClass}`}>
-                    {translateTier(tier)} {translateRank(playerRank)}
+                    {formatTierRank(tier, playerRank)}
                   </span>
                 </div>
                 

@@ -42,6 +42,12 @@ const Header = () => {
           >
             Classement
           </Link>
+          <Link 
+            to="/rules" 
+            className="text-sm font-medium transition-all hover:text-primary"
+          >
+            Règles
+          </Link>
           <a 
             href="https://www.leagueoflegends.com" 
             target="_blank" 

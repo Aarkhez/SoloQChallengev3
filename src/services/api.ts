@@ -1,9 +1,17 @@
 
 import { Player, RankedData } from '../types/player';
+import { Team } from '../types/team';
 import { toast } from "sonner";
 
+export interface TeamWithScore extends Team {
+  totalAdjustedLP: number;
+  memberCount: number;
+  players: Player[];
+}
+
 // Clé API Riot Games - Remarque: cette clé expire après 24h
-const API_KEY = import.meta.env.VITE_API_LOLKEY;
+//const API_KEY = import.meta.env.VITE_API_LOLKEY;
+const API_KEY = "RGAPI-e0e04915-4b43-497b-9e13-3ad98047625e";
 const BASE_URL = "https://euw1.api.riotgames.com/lol";
 
 // Convertir une valeur de tier à un nombre pour le tri
@@ -23,7 +31,7 @@ export const tierValues: Record<string, number> = {
 // Fonction pour récupérer les données de classement d'un joueur
 export const fetchPlayerRankedData = async (playerId: string): Promise<RankedData | null> => {
   try {
-    const response = await fetch(`${BASE_URL}/league/v4/entries/by-summoner/${playerId}?api_key=${API_KEY}`);
+    const response = await fetch(`${BASE_URL}/league/v4/entries/by-puuid/${playerId}?api_key=${API_KEY}`);
     
     if (!response.ok) {
       const errorText = await response.text();
@@ -150,6 +158,32 @@ export const translateTier = (tier: string): string => {
   return translations[tier] || tier;
 };
 
+// Calcul du score d'équipe (somme des LP ajustés des joueurs non disqualifiés)
+export const computeTeamRanking = (players: Player[], teams: Team[]): TeamWithScore[] => {
+  const byTeam = new Map<number, Player[]>();
+  for (const p of players) {
+    const tid = p.teamId ?? 0;
+    if (!byTeam.has(tid)) byTeam.set(tid, []);
+    byTeam.get(tid)!.push(p);
+  }
+  return teams
+    .filter((t) => t.id !== 0)
+    .map((team) => {
+      const teamPlayers = byTeam.get(team.id) ?? [];
+      const totalAdjustedLP = teamPlayers.reduce(
+        (sum, p) => sum + (p.isDisqualified ? 0 : calculateAdjustedLP(p)),
+        0
+      );
+      return {
+        ...team,
+        totalAdjustedLP,
+        memberCount: teamPlayers.length,
+        players: teamPlayers,
+      };
+    })
+    .sort((a, b) => b.totalAdjustedLP - a.totalAdjustedLP);
+};
+
 // Fonction pour traduire le rang en français
 export const translateRank = (rank: string): string => {
   if (!rank) return "";
@@ -162,4 +196,15 @@ export const translateRank = (rank: string): string => {
   };
   
   return translations[rank] || rank;
+};
+
+const TIERS_WITHOUT_DIVISION = ["MASTER", "GRANDMASTER", "CHALLENGER"];
+
+// Affiche tier + rank, sans division pour Master / Grand Master / Challenger
+export const formatTierRank = (tier: string, rank: string): string => {
+  const tierLabel = translateTier(tier);
+  if (!tier || tier === "UNRANKED") return tierLabel;
+  if (TIERS_WITHOUT_DIVISION.includes(tier)) return tierLabel;
+  const rankLabel = translateRank(rank);
+  return rankLabel ? `${tierLabel} ${rankLabel}` : tierLabel;
 };
