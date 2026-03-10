@@ -1,7 +1,7 @@
 const END_DATE = new Date('2025-05-06T23:59:59');
 const START_DATE = new Date('2025-03-25T00:00:00');
-const WEEKS_TOTAL = 6;
-const TOTAL_GAMES = 120;
+const WEEKS_TOTAL = 4;
+const TOTAL_GAMES = 125;
 
 export const getTimeRemaining = () => {
   const now = new Date();
@@ -30,16 +30,14 @@ export const getCurrentWeek = () => {
 const getGamesPerWeek = (week: number) => {
   switch(week) {
     case 1:
-      return 20;
+      return 25;
     case 2:
-      return 20;
+      return 30;
     case 5:
     case 3:
-      return 40;
+      return 35;
     case 4:
-      return 40;
-    case 6:
-      return 0;
+      return 35;
     default:
       return 0;
   }
