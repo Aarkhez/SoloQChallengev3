@@ -125,7 +125,6 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
           player={player} 
           rank={index + 1}
           delay={index} 
-          showRawLP={sortMethod === 'rank'}
           teamName={player.teamId ? TEAMS.find(t => t.id === player.teamId)?.name : undefined}
         />
       ))}

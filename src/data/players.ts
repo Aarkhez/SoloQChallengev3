@@ -142,7 +142,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.81,
-    icon: "/assets/icon_player/default.webp",
+    icon: "/assets/icon_player/norxus.webp",
     isDisqualified: false,
   },
   {
@@ -196,7 +196,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.85,
-    icon: "/assets/icon_player/norxus.webp",
+    icon: "/assets/icon_player/azre0.webp",
     isDisqualified: false,
   },
 ];
