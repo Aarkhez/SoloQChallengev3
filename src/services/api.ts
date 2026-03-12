@@ -10,8 +10,7 @@ export interface TeamWithScore extends Team {
 }
 
 // Clé API Riot Games - Remarque: cette clé expire après 24h
-//const API_KEY = import.meta.env.VITE_API_LOLKEY;
-const API_KEY = "RGAPI-e0e04915-4b43-497b-9e13-3ad98047625e";
+const API_KEY = import.meta.env.VITE_API_LOLKEY;
 const BASE_URL = "https://euw1.api.riotgames.com/lol";
 
 // Convertir une valeur de tier à un nombre pour le tri
