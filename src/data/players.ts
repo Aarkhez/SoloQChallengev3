@@ -35,7 +35,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.94,
     icon: "/assets/icon_player/zirpop.webp",
-    isDisqualified: true,
+    isDisqualified: false,
   },
   {
     id: 3,
@@ -53,7 +53,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.83,
     icon: "/assets/icon_player/viat.webp",
-    isDisqualified: true,
+    isDisqualified: false,
   },
   {
     id: 4,
@@ -71,7 +71,7 @@ export const PLAYERS: Player[] = [
     wins: 0,
     losses: 0,
     lpAdjustment: 0.87,
-    isDisqualified: true,
+    isDisqualified: false,
   },
   {
     id: 5,
@@ -89,7 +89,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.91,
     icon: "/assets/icon_player/slash.webp",
-    isDisqualified: true,
+    isDisqualified: false,
   },
   {
     id: 6,
@@ -107,7 +107,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.91,
     icon: "/assets/icon_player/tordy.webp",
-    isDisqualified: true,
+    isDisqualified: false,
   },
   {
     id: 7,
@@ -143,7 +143,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.81,
     icon: "/assets/icon_player/default.webp",
-    isDisqualified: true,
+    isDisqualified: false,
   },
   {
     id: 9,
@@ -161,7 +161,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.87,
     icon: "/assets/icon_player/watson.webp",
-    isDisqualified: true,
+    isDisqualified: false,
   },
   {
     id: 10,
@@ -179,7 +179,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.83,
     icon: "/assets/icon_player/veetox.webp",
-    isDisqualified: true,
+    isDisqualified: false,
   },
   {
     id: 11,
@@ -197,7 +197,7 @@ export const PLAYERS: Player[] = [
     losses: 0,
     lpAdjustment: 0.85,
     icon: "/assets/icon_player/azre0.webp",
-    isDisqualified: true,
+    isDisqualified: false,
   },
 ];
 
