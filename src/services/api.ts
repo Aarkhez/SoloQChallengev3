@@ -70,11 +70,11 @@ export const updatePlayerWithRankedData = (player: Player, rankedData: RankedDat
   
   return {
     ...player,
-    tier: rankedData.tier,
-    rank: player.rank || rankedData.rank,
-    lp: player.lp || rankedData.leaguePoints,
-    wins: player.wins || rankedData.wins,
-    losses: player.losses || rankedData.losses,
+    tier: player.tier ?? rankedData.tier,
+    rank: player.rank ?? rankedData.rank,
+    lp: player.lp ?? rankedData.leaguePoints,
+    wins: player.wins ?? rankedData.wins,
+    losses: player.losses ?? rankedData.losses,
     gamesPlayed: (player.wins + player.losses) || (rankedData.wins + rankedData.losses),
     isLoading: false
     };
@@ -84,6 +84,7 @@ export const updatePlayerWithRankedData = (player: Player, rankedData: RankedDat
 
 // Fonction pour calculer les LP ajustés (avec le coefficient lpAdjustment)
 export const calculateAdjustedLP = (player: Player): number => {
+  if (player.isDisqualified) return 0;
   if (player.tier === "UNRANKED") return 0;
   
   const baseTierValue = tierValues[player.tier] || 0;
