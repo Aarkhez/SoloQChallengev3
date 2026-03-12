@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { TeamWithScore } from '../services/api';
-import { Users, ChevronRight } from 'lucide-react';
+import { Users, ChevronRight, Trophy } from 'lucide-react';
 
 interface TeamCardProps {
   team: TeamWithScore;
@@ -35,9 +35,17 @@ const TeamCard = ({ team, rank, delay = 0, animate = true }: TeamCardProps) => {
       <div className="flex-grow min-w-0">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
-            <h3 className="text-xl font-bold tracking-tight text-gray-900">
-              {team.name}
-            </h3>
+            <div className="flex items-center gap-2">
+              <h3 className="text-xl font-bold tracking-tight text-gray-900">
+                {team.name}
+              </h3>
+              {rank === 1 && (
+                <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-800 border border-amber-200">
+                  <Trophy className="w-4 h-4 mr-1" />
+                  60€
+                </span>
+              )}
+            </div>
             <div className="flex items-center mt-1 text-sm text-gray-500">
               <Users className="h-4 w-4 mr-1.5 text-primary/70" />
               {team.memberCount} joueur{team.memberCount > 1 ? 's' : ''}
