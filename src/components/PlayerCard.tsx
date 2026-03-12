@@ -19,6 +19,7 @@ interface PlayerCardProps {
   animate?: boolean;
   delay?: number;
   teamName?: string;
+  showCashPrize?: boolean;
 }
 
 const CASH_PRIZES = {
@@ -27,7 +28,7 @@ const CASH_PRIZES = {
   3: "10€"
 };
 
-const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName }: PlayerCardProps) => {
+const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showCashPrize = true }: PlayerCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const {
@@ -53,7 +54,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName }: Playe
   const adjustedLP = calculateAdjustedLP(player);
   const rawLP = calculateRawLP(player);
   const remainingGames = getRemainingGames(gamesPlayed);
-  const hasCashPrize = rank <= 3;
+  const hasCashPrize = showCashPrize && rank <= 3;
   
   if (isLoading) {
     return (
