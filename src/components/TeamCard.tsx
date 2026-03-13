@@ -48,7 +48,7 @@ const TeamCard = ({ team, rank, delay = 0, animate = true }: TeamCardProps) => {
             </div>
             <div className="flex items-center mt-1 text-sm text-gray-500">
               <Users className="h-4 w-4 mr-1.5 text-primary/70" />
-              {team.memberCount} joueur{team.memberCount > 1 ? 's' : ''}
+              {team.memberCount} joueur{team.memberCount > 1 ? 's' : ''} · {team.totalGames} games
             </div>
           </div>
 

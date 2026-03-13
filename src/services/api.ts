@@ -7,6 +7,7 @@ export interface TeamWithScore extends Team {
   totalAdjustedLP: number;
   memberCount: number;
   players: Player[];
+  totalGames: number;
 }
 
 // Clé API Riot Games - Remarque: cette clé expire après 24h
@@ -189,11 +190,19 @@ export const computeTeamRanking = (players: Player[], teams: Team[]): TeamWithSc
         (sum, p) => sum + (p.isDisqualified ? 0 : calculateAdjustedLP(p)),
         0
       );
+      const totalGames = teamPlayers.reduce((sum, p) => {
+        const games =
+          typeof p.gamesPlayed === "number" && p.gamesPlayed > 0
+            ? p.gamesPlayed
+            : (p.wins ?? 0) + (p.losses ?? 0);
+        return sum + games;
+      }, 0);
       return {
         ...team,
         totalAdjustedLP,
         memberCount: teamPlayers.length,
         players: teamPlayers,
+        totalGames,
       };
     })
     .sort((a, b) => b.totalAdjustedLP - a.totalAdjustedLP);
