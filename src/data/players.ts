@@ -199,6 +199,24 @@ export const PLAYERS: Player[] = [
     icon: "/assets/icon_player/azre0.webp",
     isDisqualified: false,
   },
+  {
+    id: 12,
+    name: "Neyko",
+    teamId: 1,
+    pseudo: "Norxus",
+    tag: "Sigma",
+    idLol: "kthtfik6rr84Mf--ZzXWuJ-6D2mFW9fHvnYzJVOIyOtC77RE2fv98sYwZOM7bNwyhgMfhiSyK9Lwbw",
+    twitch: "",
+    opgg: "https://www.op.gg/summoners/euw/Norxus-Sigma",
+    tier: "",
+    rank: "",
+    lp: 0,
+    wins: 0,
+    losses: 0,
+    lpAdjustment: 0.85,
+    icon: "/assets/icon_player/default.webp",
+    isDisqualified: false,
+  },
 ];
 
 export default PLAYERS;
