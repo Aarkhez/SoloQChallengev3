@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { getTimeRemaining, getCurrentWeek } from '../utils/timeUtils';
+import { getTimeRemaining, getCurrentWeek, WEEKS_TOTAL } from '../utils/timeUtils';
 import { CalendarDays, Timer as TimerIcon } from 'lucide-react';
 
 const Timer = () => {
@@ -63,7 +63,7 @@ const Timer = () => {
         
         <div className="flex items-center">
           <CalendarDays className="mr-2 text-blue-500" size={20} />
-          <span className="text-lg font-semibold">Semaine {currentWeek}/6</span>
+          <span className="text-lg font-semibold">Semaine {currentWeek}/{WEEKS_TOTAL}</span>
         </div>
       </div>
     </div>

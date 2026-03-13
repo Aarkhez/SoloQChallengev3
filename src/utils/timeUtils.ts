@@ -1,6 +1,6 @@
 const END_DATE = new Date('2026-04-10T00:59:59');
 const START_DATE = new Date('2026-03-13T00:00:00');
-const WEEKS_TOTAL = 4;
+export const WEEKS_TOTAL = 4;
 const TOTAL_GAMES = 125;
 
 export const getTimeRemaining = () => {
