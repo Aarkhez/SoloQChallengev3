@@ -19,6 +19,7 @@ interface PlayerCardProps {
   animate?: boolean;
   delay?: number;
   teamName?: string;
+  showRawLP?: boolean;
   showCashPrize?: boolean;
 }
 
@@ -28,7 +29,7 @@ const CASH_PRIZES = {
   3: "10€"
 };
 
-const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showCashPrize = true }: PlayerCardProps) => {
+const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showRawLP = false, showCashPrize = true }: PlayerCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   
   const {
@@ -53,6 +54,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showCas
   const tierClass = getTierClass(tier);
   const adjustedLP = calculateAdjustedLP(player);
   const rawLP = calculateRawLP(player);
+  const displayedLP = showRawLP ? rawLP : adjustedLP;
   const remainingGames = getRemainingGames(gamesPlayed);
   const hasCashPrize = showCashPrize && rank <= 3;
   
@@ -144,12 +146,14 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showCas
           
           <div className="mt-3 flex flex-col items-end">
             <div className="text-xl font-bold text-primary">
-              {adjustedLP} LP
+              {displayedLP} LP
             </div>
 
+            {!showRawLP && (
               <div className="text-xs text-gray-500">
                 Coefficient: {lpAdjustment}
               </div>
+            )}
 
             {/* Affichage des parties restantes */}
             <div className="flex items-center mt-1">

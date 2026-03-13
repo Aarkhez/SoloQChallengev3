@@ -127,6 +127,7 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
           delay={index} 
           teamName={player.teamId ? TEAMS.find(t => t.id === player.teamId)?.name : undefined}
           showCashPrize={sortMethod === 'adjusted'}
+          showRawLP={sortMethod === 'rank'}
         />
       ))}
     </div>
