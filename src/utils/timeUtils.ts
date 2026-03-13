@@ -1,5 +1,5 @@
-const END_DATE = new Date('2025-05-06T23:59:59');
-const START_DATE = new Date('2025-03-25T00:00:00');
+const END_DATE = new Date('2026-04-10T00:59:59');
+const START_DATE = new Date('2026-03-13T00:00:00');
 const WEEKS_TOTAL = 4;
 const TOTAL_GAMES = 125;
 
