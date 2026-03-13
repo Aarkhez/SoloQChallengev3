@@ -66,15 +66,30 @@ export const updatePlayerWithRankedData = (player: Player, rankedData: RankedDat
     };
   }
 
-  
+  const pickNonEmptyString = (value: string | null | undefined, fallback: string) => {
+    const v = (value ?? "").trim();
+    return v.length > 0 ? v : fallback;
+  };
+
+  // Règle demandée: si null / vide / 0 -> on prend `rankedData`
+  const pickPositiveNumber = (value: number | null | undefined, fallback: number) => {
+    return typeof value === "number" && value > 0 ? value : fallback;
+  };
+
+  const playerWins = pickPositiveNumber(player.wins, rankedData.wins);
+  const playerLosses = pickPositiveNumber(player.losses, rankedData.losses);
+  const computedGamesPlayed = (playerWins + playerLosses) > 0
+    ? (playerWins + playerLosses)
+    : (rankedData.wins + rankedData.losses);
+
   return {
     ...player,
-    tier: player.tier ?? rankedData.tier,
-    rank: player.rank ?? rankedData.rank,
-    lp: player.lp ?? rankedData.leaguePoints,
-    wins: player.wins ?? rankedData.wins,
-    losses: player.losses ?? rankedData.losses,
-    gamesPlayed: (player.wins + player.losses) || (rankedData.wins + rankedData.losses),
+    tier: pickNonEmptyString(player.tier, rankedData.tier),
+    rank: pickNonEmptyString(player.rank, rankedData.rank),
+    lp: pickPositiveNumber(player.lp, rankedData.leaguePoints),
+    wins: playerWins,
+    losses: playerLosses,
+    gamesPlayed: computedGamesPlayed,
     isLoading: false
     };
 
