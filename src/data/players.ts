@@ -87,7 +87,7 @@ export const PLAYERS: Player[] = [
     lp: 0,
     wins: 0,
     losses: 0,
-    lpAdjustment: 0.91,
+    lpAdjustment: 0.93,
     icon: "/assets/icon_player/slash.webp",
     isDisqualified: false,
   },
