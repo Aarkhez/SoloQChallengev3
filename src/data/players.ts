@@ -105,7 +105,7 @@ export const PLAYERS: Player[] = [
     lp: 0,
     wins: 0,
     losses: 0,
-    lpAdjustment: 0.91,
+    lpAdjustment: 0.94,
     icon: "/assets/icon_player/tordy.webp",
     isDisqualified: false,
   },
