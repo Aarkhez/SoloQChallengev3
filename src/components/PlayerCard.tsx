@@ -62,8 +62,8 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showRaw
     return (
       <div className="glass-card relative flex items-center p-4 rounded-lg shadow-md animate-pulse">
         <div className="w-full">
-          <div className="h-6 bg-gray-200 rounded w-1/4 mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+          <div className="h-6 bg-muted rounded w-1/4 mb-2"></div>
+          <div className="h-4 bg-muted rounded w-1/2"></div>
         </div>
       </div>
     );
@@ -106,9 +106,9 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showRaw
             <div className="flex items-center">
               <h3 className="text-xl font-bold tracking-tight">
                 {pseudo}
-                <span className="text-sm font-semibold text-gray-500"> #{tag}</span>
+                <span className="text-sm font-semibold text-muted-foreground"> #{tag}</span>
                 {teamName && (
-                  <span className="text-sm font-medium text-gray-500 ml-2">· {teamName}</span>
+                  <span className="text-sm font-medium text-muted-foreground ml-2">· {teamName}</span>
                 )}
                 {player.isDisqualified && (
                   <span className="py-1 px-1 font-semibold rounded-md text-xs bg-red-100 text-red-800 border border-red-200 ml-2">
@@ -128,14 +128,14 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showRaw
                   {formatTierRank(tier, playerRank)}
                 </span>
               ) : (
-                <span className="tier-badge bg-gray-100 text-gray-500">
+                <span className="tier-badge bg-muted text-muted-foreground">
                   Non classé
                 </span>
               )}
               <span className="text-sm font-medium">
                 {lp} LP
               </span>
-              <span className="text-xs text-gray-500">
+              <span className="text-xs text-muted-foreground">
                 ({wins}V {losses}D)
               </span>
               <span className="text-xs font-medium">
@@ -150,7 +150,7 @@ const PlayerCard = ({ player, rank, animate = true, delay = 0, teamName, showRaw
             </div>
 
             {!showRawLP && (
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-muted-foreground">
                 Coefficient: {lpAdjustment}
               </div>
             )}

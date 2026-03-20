@@ -1,6 +1,6 @@
-
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,56 +20,60 @@ const Header = () => {
   }, [scrolled]);
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 transition-all duration-300 ease-in-out ${
-        scrolled 
-          ? 'bg-white/80 backdrop-blur-md shadow-sm' 
-          : 'bg-transparent'
+        scrolled
+          ? "bg-background/80 backdrop-blur-md shadow-sm border-b border-border/40"
+          : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <Link 
-          to="/" 
-          className="text-2xl font-bold tracking-tight transition-all hover:opacity-80"
+      <div className="max-w-7xl mx-auto flex justify-between items-center gap-4">
+        <Link
+          to="/"
+          className="text-2xl font-bold tracking-tight text-foreground transition-all hover:opacity-80"
         >
           <span className="text-primary">SoloQ</span>Challenge
         </Link>
-        
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link 
-            to="/" 
-            className="text-sm font-medium transition-all hover:text-primary"
+
+        <div className="hidden md:flex items-center gap-6">
+          <ThemeToggle />
+          <nav className="flex items-center space-x-8">
+          <Link
+            to="/"
+            className="text-sm font-medium text-foreground/90 transition-all hover:text-primary"
           >
             Classement
           </Link>
-          <Link 
-            to="/rules" 
-            className="text-sm font-medium transition-all hover:text-primary"
+          <Link
+            to="/rules"
+            className="text-sm font-medium text-foreground/90 transition-all hover:text-primary"
           >
             Règles
           </Link>
-          <a 
-            href="https://www.leagueoflegends.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-sm font-medium transition-all hover:text-primary"
+          <a
+            href="https://www.leagueoflegends.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-foreground/90 transition-all hover:text-primary"
           >
             League of Legends
           </a>
-          <a 
-            href="https://developer.riotgames.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-sm font-medium transition-all hover:text-primary"
+          <a
+            href="https://developer.riotgames.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-foreground/90 transition-all hover:text-primary"
           >
             API Riot
           </a>
-        </nav>
-        
-        <div className="flex md:hidden">
-          <button 
-            aria-label="Menu" 
-            className="p-2 rounded-md hover:bg-gray-100 transition-colors"
+          </nav>
+        </div>
+
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+          <button
+            aria-label="Menu"
+            className="p-2 rounded-md hover:bg-accent transition-colors text-foreground"
           >
             <svg 
               xmlns="http://www.w3.org/2000/svg" 

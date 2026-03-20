@@ -24,8 +24,8 @@ const Timer = () => {
   
   if (timeLeft.totalMs <= 0) {
     return (
-      <div className="bg-gray-100 rounded-lg p-4 mb-6 text-center">
-        <h2 className="text-xl font-bold text-gray-800">
+      <div className="bg-muted rounded-lg p-4 mb-6 text-center">
+        <h2 className="text-xl font-bold text-foreground">
           Le SoloQ Challenge est terminé !
         </h2>
       </div>
@@ -33,37 +33,37 @@ const Timer = () => {
   }
   
   return (
-    <div className="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 animate-enter">
+    <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-lg p-4 mb-6 animate-enter">
       <div className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center">
-          <TimerIcon className="mr-2 text-blue-500" size={20} />
-          <h2 className="text-lg font-semibold text-gray-800">
+          <TimerIcon className="mr-2 text-primary" size={20} />
+          <h2 className="text-lg font-semibold text-foreground">
             Fin du challenge dans
           </h2>
         </div>
         
         <div className="flex items-center space-x-3 text-center">
-          <div className="bg-white px-3 py-2 rounded-md shadow-sm">
-            <div className="text-2xl font-bold text-blue-600">{timeLeft.days}</div>
-            <div className="text-xs text-gray-500">Jours</div>
+          <div className="bg-card border border-border px-3 py-2 rounded-md shadow-sm">
+            <div className="text-2xl font-bold text-primary">{timeLeft.days}</div>
+            <div className="text-xs text-muted-foreground">Jours</div>
           </div>
-          <div className="bg-white px-3 py-2 rounded-md shadow-sm">
-            <div className="text-2xl font-bold text-blue-600">{timeLeft.hours}</div>
-            <div className="text-xs text-gray-500">Heures</div>
+          <div className="bg-card border border-border px-3 py-2 rounded-md shadow-sm">
+            <div className="text-2xl font-bold text-primary">{timeLeft.hours}</div>
+            <div className="text-xs text-muted-foreground">Heures</div>
           </div>
-          <div className="bg-white px-3 py-2 rounded-md shadow-sm">
-            <div className="text-2xl font-bold text-blue-600">{timeLeft.minutes}</div>
-            <div className="text-xs text-gray-500">Minutes</div>
+          <div className="bg-card border border-border px-3 py-2 rounded-md shadow-sm">
+            <div className="text-2xl font-bold text-primary">{timeLeft.minutes}</div>
+            <div className="text-xs text-muted-foreground">Minutes</div>
           </div>
-          <div className="bg-white px-3 py-2 rounded-md shadow-sm">
-            <div className="text-2xl font-bold text-blue-600">{timeLeft.seconds}</div>
-            <div className="text-xs text-gray-500">Secondes</div>
+          <div className="bg-card border border-border px-3 py-2 rounded-md shadow-sm">
+            <div className="text-2xl font-bold text-primary">{timeLeft.seconds}</div>
+            <div className="text-xs text-muted-foreground">Secondes</div>
           </div>
         </div>
         
         <div className="flex items-center">
-          <CalendarDays className="mr-2 text-blue-500" size={20} />
-          <span className="text-lg font-semibold">Semaine {currentWeek}/{WEEKS_TOTAL}</span>
+          <CalendarDays className="mr-2 text-primary" size={20} />
+          <span className="text-lg font-semibold text-foreground">Semaine {currentWeek}/{WEEKS_TOTAL}</span>
         </div>
       </div>
     </div>

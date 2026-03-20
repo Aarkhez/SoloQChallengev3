@@ -37,10 +37,10 @@ const Rules = () => {
               <BookOpen className="w-7 h-7 text-primary" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold tracking-tight text-gray-900">
+              <h1 className="text-3xl font-bold tracking-tight text-foreground">
                 Règles du SoloQ Challenge
               </h1>
-              <p className="text-gray-500 mt-1">
+              <p className="text-muted-foreground mt-1">
                 Tout ce qu&apos;il faut savoir
               </p>
             </div>
@@ -48,40 +48,40 @@ const Rules = () => {
 
         {/* Section Présentation */}
         <section className="mb-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1 h-5 rounded-full bg-primary" />
               Comment ça marche
             </h2>
-            <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
-              <p className="text-gray-700 mb-4 leading-relaxed">
+            <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+              <p className="text-foreground/90 mb-4 leading-relaxed">
                 Le SoloQ Challenge est une compétition amicale entre joueurs de League of Legends. Chaque joueur tente de grimper le plus haut possible en classement solo.
               </p>
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                Les scores sont ajustés selon un <strong>coefficient personnalisé</strong> pour chaque joueur, afin d&apos;équilibrer les différences de niveau initial.
+              <p className="text-foreground/90 mb-4 leading-relaxed">
+                Les scores sont ajustés selon un <strong className="text-foreground">coefficient personnalisé</strong> pour chaque joueur, afin d&apos;équilibrer les différences de niveau initial.
               </p>
-              <p className="text-gray-700 leading-relaxed">
-                Les joueurs sont répartis en <strong>deux équipes de 6 joueurs</strong>. En plus du classement individuel, un <strong>classement par équipe</strong> est disponible : il est déterminé par la somme des LP ajustés des joueurs de chaque équipe.
+              <p className="text-foreground/90 leading-relaxed">
+                Les joueurs sont répartis en <strong className="text-foreground">deux équipes de 6 joueurs</strong>. En plus du classement individuel, un <strong className="text-foreground">classement par équipe</strong> est disponible : il est déterminé par la somme des LP ajustés des joueurs de chaque équipe.
               </p>
             </div>
           </section>
            {/* Section Tri */}
            <section className="mb-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <span className="w-1 h-5 rounded-full bg-primary" />
               Tri du classement
             </h2>
-            <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
-              <p className="text-gray-700 mb-4 leading-relaxed">
+            <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+              <p className="text-foreground/90 mb-4 leading-relaxed">
                 Vous pouvez trier le classement de deux façons :
               </p>
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-6 h-6 rounded-md bg-primary/10 text-primary text-sm font-semibold flex items-center justify-center mt-0.5">1</span>
-                  <span className="text-gray-700"><strong>Par classement</strong> : LP bruts (non ajustés), basés sur le rang et les LP des joueurs.</span>
+                  <span className="text-foreground/90"><strong className="text-foreground">Par classement</strong> : LP bruts (non ajustés), basés sur le rang et les LP des joueurs.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="flex-shrink-0 w-6 h-6 rounded-md bg-primary/10 text-primary text-sm font-semibold flex items-center justify-center mt-0.5">2</span>
-                  <span className="text-gray-700"><strong>Par LP ajustés</strong> : LP multipliés par le coefficient de chaque joueur.</span>
+                  <span className="text-foreground/90"><strong className="text-foreground">Par LP ajustés</strong> : LP multipliés par le coefficient de chaque joueur.</span>
                 </li>
               </ul>
             </div>
@@ -89,66 +89,66 @@ const Rules = () => {
 
            {/* Section Format */}
            <section className="mb-8">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <Calendar className="w-5 h-5 text-primary" />
               Format du challenge
             </h2>
-            <div className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm">
-              <p className="text-gray-700 mb-4 leading-relaxed">
-                Le challenge se déroule sur <strong>4 semaines</strong> avec un plafond de parties par semaine :
+            <div className="bg-card rounded-xl border border-border p-6 shadow-sm">
+              <p className="text-foreground/90 mb-4 leading-relaxed">
+                Le challenge se déroule sur <strong className="text-foreground">4 semaines</strong> avec un plafond de parties par semaine :
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
-                <li className="flex items-center gap-2 text-gray-700 py-2 px-3 rounded-lg bg-gray-50">
-                  <strong className="text-primary w-20">Semaine 1</strong> 25 parties max
+                <li className="flex items-center gap-2 text-foreground/90 py-2 px-3 rounded-lg bg-muted/70 border border-border/60">
+                  <strong className="text-primary w-20 shrink-0">Semaine 1</strong> 25 parties max
                 </li>
-                <li className="flex items-center gap-2 text-gray-700 py-2 px-3 rounded-lg bg-gray-50">
-                  <strong className="text-primary w-20">Semaine 2</strong> 30 parties max
+                <li className="flex items-center gap-2 text-foreground/90 py-2 px-3 rounded-lg bg-muted/70 border border-border/60">
+                  <strong className="text-primary w-20 shrink-0">Semaine 2</strong> 30 parties max
                 </li>
-                <li className="flex items-center gap-2 text-gray-700 py-2 px-3 rounded-lg bg-gray-50">
-                  <strong className="text-primary w-20">Semaine 3</strong> 35 parties max
+                <li className="flex items-center gap-2 text-foreground/90 py-2 px-3 rounded-lg bg-muted/70 border border-border/60">
+                  <strong className="text-primary w-20 shrink-0">Semaine 3</strong> 35 parties max
                 </li>
-                <li className="flex items-center gap-2 text-gray-700 py-2 px-3 rounded-lg bg-gray-50">
-                  <strong className="text-primary w-20">Semaine 4</strong> 35 parties max
+                <li className="flex items-center gap-2 text-foreground/90 py-2 px-3 rounded-lg bg-muted/70 border border-border/60">
+                  <strong className="text-primary w-20 shrink-0">Semaine 4</strong> 35 parties max
                 </li>
               </ul>
-              <div className="flex items-center gap-3 bg-primary/5 border border-primary/20 rounded-lg px-4 py-3 mb-4">
-  <Trophy className="w-5 h-5 text-primary flex-shrink-0"/>
-  <span className="text-gray-800 text-sm">
-    <strong>Dernières 24h :</strong> parties <strong>illimitées</strong>
-  </span>
-</div>
+              <div className="flex items-center gap-3 bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-lg px-4 py-3 mb-4">
+                <Trophy className="w-5 h-5 text-primary flex-shrink-0" />
+                <span className="text-foreground text-sm">
+                  <strong>Dernières 24h :</strong> parties <strong>illimitées</strong>
+                </span>
+              </div>
 
-<p className="text-gray-700 text-sm">
-  Le nombre de parties restantes ou manquantes est affiché dans le classement pour chaque joueur.
-</p>
+              <p className="text-muted-foreground text-sm">
+                Le nombre de parties restantes ou manquantes est affiché dans le classement pour chaque joueur.
+              </p>
             </div>
           </section>
 
           {/* Section Cash Prize */}
           <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-foreground mb-4 flex items-center gap-2">
               <Coins className="w-5 h-5 text-primary" />
               Cash Prize
             </h2>
-            <div className="bg-gradient-to-br from-amber-50 to-orange-50/50 rounded-xl border border-amber-100 p-6 shadow-sm">
-              <p className="text-gray-700 mb-4 leading-relaxed">
+            <div className="rounded-xl border p-6 shadow-sm bg-gradient-to-br from-amber-50 to-orange-50/50 border-amber-100/80 dark:from-amber-950/35 dark:to-orange-950/25 dark:border-amber-800/40">
+              <p className="text-foreground/90 mb-4 leading-relaxed">
                 Les récompenses sont réparties entre le classement individuel et le classement par équipe.
               </p>
               <ul className="space-y-3">
-                <li className="flex items-center gap-3 text-gray-800">
-                  <Trophy className="w-5 h-5 text-amber-500 flex-shrink-0" />
+                <li className="flex items-center gap-3 text-foreground">
+                  <Trophy className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
                   <span><strong>Équipe gagnante</strong> : 60€ (répartis entre les 6 joueurs)</span>
                 </li>
-                <li className="flex items-center gap-3 text-gray-800">
-                  <Trophy className="w-5 h-5 text-amber-500 flex-shrink-0" />
+                <li className="flex items-center gap-3 text-foreground">
+                  <Trophy className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
                   <span><strong>1er du classement</strong> : 30€</span>
                 </li>
-                <li className="flex items-center gap-3 text-gray-800">
-                  <Trophy className="w-5 h-5 text-amber-500 flex-shrink-0" />
+                <li className="flex items-center gap-3 text-foreground">
+                  <Trophy className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
                   <span><strong>2e du classement</strong> : 20€</span>
                 </li>
-                <li className="flex items-center gap-3 text-gray-800">
-                  <Trophy className="w-5 h-5 text-amber-500 flex-shrink-0" />
+                <li className="flex items-center gap-3 text-foreground">
+                  <Trophy className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
                   <span><strong>3e du classement</strong> : 10€</span>
                 </li>
               </ul>

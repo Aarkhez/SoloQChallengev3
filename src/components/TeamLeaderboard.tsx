@@ -64,8 +64,8 @@ const TeamLeaderboard = ({ players: initialPlayers, teams }: TeamLeaderboardProp
 
   if (teamRanking.length === 0) {
     return (
-      <div className="mt-8 text-center p-8 bg-gray-50 rounded-lg">
-        <p className="text-lg text-gray-600">Aucune équipe à afficher.</p>
+      <div className="mt-8 text-center p-8 bg-muted/50 rounded-lg border border-border">
+        <p className="text-lg text-muted-foreground">Aucune équipe à afficher.</p>
       </div>
     );
   }

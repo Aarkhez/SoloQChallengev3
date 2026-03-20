@@ -36,17 +36,17 @@ const TeamCard = ({ team, rank, delay = 0, animate = true }: TeamCardProps) => {
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <h3 className="text-xl font-bold tracking-tight text-gray-900">
+              <h3 className="text-xl font-bold tracking-tight text-foreground">
                 {team.name}
               </h3>
               {rank === 1 && (
-                <span className="inline-flex items-center rounded-full bg-amber-100 px-3 py-1 text-sm font-semibold text-amber-800 border border-amber-200">
+                <span className="inline-flex items-center rounded-full bg-amber-100 dark:bg-amber-950/50 px-3 py-1 text-sm font-semibold text-amber-800 dark:text-amber-200 border border-amber-200 dark:border-amber-800">
                   <Trophy className="w-4 h-4 mr-1" />
                   60€
                 </span>
               )}
             </div>
-            <div className="flex items-center mt-1 text-sm text-gray-500">
+            <div className="flex items-center mt-1 text-sm text-muted-foreground">
               <Users className="h-4 w-4 mr-1.5 text-primary/70" />
               {team.memberCount} joueur{team.memberCount > 1 ? 's' : ''} · {team.totalGames} games
             </div>
@@ -56,30 +56,30 @@ const TeamCard = ({ team, rank, delay = 0, animate = true }: TeamCardProps) => {
             <span className="text-2xl font-bold text-primary tabular-nums">
               {team.totalAdjustedLP} LP
             </span>
-            <span className="text-xs text-gray-500">total LP ajustés</span>
+            <span className="text-xs text-muted-foreground">total LP ajustés</span>
           </div>
         </div>
 
         {team.players.length > 0 && (
-          <div className="mt-3 pt-3 border-t border-gray-100 flex flex-wrap gap-x-3 gap-y-1">
+          <div className="mt-3 pt-3 border-t border-border flex flex-wrap gap-x-3 gap-y-1">
             {team.players.slice(0, 5).map((p) => (
               <Link
                 key={p.id}
                 to={`/player/${p.id}`}
                 onClick={(e) => e.stopPropagation()}
-                className="text-xs font-medium text-gray-500 hover:text-primary transition-colors"
+                className="text-xs font-medium text-muted-foreground hover:text-primary transition-colors"
               >
                 {p.pseudo}
                 {p.isDisqualified && ' (DQ)'}
               </Link>
             ))}
             {team.players.length > 5 && (
-              <span className="text-xs text-gray-400">+{team.players.length - 5}</span>
+              <span className="text-xs text-muted-foreground/80">+{team.players.length - 5}</span>
             )}
           </div>
         )}
       </div>
-      <ChevronRight className="hidden sm:block w-5 h-5 text-gray-300 flex-shrink-0" aria-hidden />
+      <ChevronRight className="hidden sm:block w-5 h-5 text-muted-foreground/50 flex-shrink-0" aria-hidden />
     </Link>
   );
 };

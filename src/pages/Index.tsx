@@ -32,7 +32,7 @@ const Index = () => {
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
               SoloQ Challenge
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Suivez en temps réel le classement des joueurs de League of Legends dans leur SoloQ Challenge
             </p>
           </div>
@@ -46,10 +46,10 @@ const Index = () => {
               <BookOpen className="w-6 h-6 text-primary" />
             </div>
             <div className="text-left flex-grow">
-              <h2 className="text-lg font-bold text-gray-900 group-hover:text-primary transition-colors">
+              <h2 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">
                 Règles du challenge
               </h2>
-              <p className="text-sm text-gray-600 mt-0.5">
+              <p className="text-sm text-muted-foreground mt-0.5">
                 Comment ça marche, format, cash prize…
               </p>
             </div>

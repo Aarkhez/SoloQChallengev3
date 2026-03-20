@@ -96,8 +96,8 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
 
   if (players.length === 0) {
     return (
-      <div className="mt-8 text-center p-8 bg-gray-50 rounded-lg">
-        <p className="text-lg text-gray-600">Aucun joueur n'a été trouvé.</p>
+      <div className="mt-8 text-center p-8 bg-muted/50 rounded-lg border border-border">
+        <p className="text-lg text-muted-foreground">Aucun joueur n'a été trouvé.</p>
       </div>
     );
   }
