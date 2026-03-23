@@ -113,7 +113,7 @@ const Leaderboard = ({ players: initialPlayers }: LeaderboardProps) => {
             <SelectValue placeholder="Méthode de tri" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="rank">Par classement</SelectItem>
+            <SelectItem value="rank">Par LP</SelectItem>
             <SelectItem value="adjusted">Par LP ajustés</SelectItem>
           </SelectContent>
         </Select>
